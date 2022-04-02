@@ -1,33 +1,33 @@
-const { DataTypes } = require('sequelize');
-const { sequelize } = require('../utils/database');
+const { DataTypes } = require("sequelize");
+const { sequelize } = require("../utils/database");
 
-const Order = sequelize.define('order', {
+const Order = sequelize.define("order", {
   id: {
     primaryKey: true,
     type: DataTypes.INTEGER,
     autoIncrement: true,
-    allowNull: false
+    allowNull: false,
   },
   userId: {
     type: DataTypes.INTEGER,
-    allowNull: false
+    allowNull: false,
   },
   cartId: {
     type: DataTypes.INTEGER,
-    allowNull: false
+    allowNull: false,
   },
   issuedAt: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: false,
   },
   totalPrice: {
     type: DataTypes.INTEGER,
-    allowNull: false
+    allowNull: false,
   },
   status: {
     type: DataTypes.STRING(10),
     allowNull: false,
-    defaultValue: 'active'
-  }
+    defaultValue: "active",
+  },
 });
 module.exports = { Order };

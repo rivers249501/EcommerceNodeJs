@@ -1,13 +1,13 @@
-const { app } = require('./app');
+const { app } = require("./app");
 
 // Utils
-const { sequelize } = require('./utils/database');
-const { initModels } = require('./utils/initModels');
+const { sequelize } = require("./utils/database");
+const { initModels } = require("./utils/initModels");
 
 // Database authenticated
 sequelize
   .authenticate()
-  .then(() => console.log('Database authenticated'))
+  .then(() => console.log("Database authenticated"))
   .catch((err) => console.log(err));
 
 // Models relations
@@ -16,7 +16,7 @@ initModels();
 sequelize
   //.sync({ force: true })
   .sync()
-  .then(() => console.log('Database synchronized'))
+  .then(() => console.log("Database synchronized"))
   .catch((err) => console.log(err));
 // process.ENV.PORT
 //si port esta definida y tiene un valor  entonces el port sera igual al puerto (4000)

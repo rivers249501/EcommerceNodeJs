@@ -8,9 +8,10 @@ const { catchAsync } = require("../utils/catchAsync");
 exports.productExists = catchAsync(async (req, res, next) => {
   const { id } = req.params;
 
-  const product = await Product.findOne({ where: { id, status: "active" }, 
-  include: [{ model: User, attributes: { exclude: ['password'] } }]
-});
+  const product = await Product.findOne({
+    where: { id, status: "active" },
+    include: [{ model: User, attributes: { exclude: ["password"] } }],
+  });
   // console.log(product)
 
   if (!product) {
@@ -26,7 +27,7 @@ exports.productOwner = catchAsync(async (req, res, next) => {
 
   // Compare product's userId
   if (product.userId !== currentUser.id) {
-    return next(new AppError(403, 'You are not the owner of this product'));
+    return next(new AppError(403, "You are not the owner of this product"));
   }
 
   next();

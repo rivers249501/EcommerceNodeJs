@@ -1,22 +1,22 @@
-const { DataTypes } = require('sequelize');
-const { sequelize } = require('../utils/database');
+const { DataTypes } = require("sequelize");
+const { sequelize } = require("../utils/database");
 
-const Cart = sequelize.define('cart', {
+const Cart = sequelize.define("cart", {
   id: {
     primaryKey: true,
     type: DataTypes.INTEGER,
     autoIncrement: true,
-    allowNull: false
+    allowNull: false,
   },
   userId: {
     type: DataTypes.INTEGER,
-    allowNull: false
+    allowNull: false,
   },
   status: {
     type: DataTypes.STRING(10),
     allowNull: false,
-    defaultValue: 'active'
-  }
+    defaultValue: "active",
+  },
 });
 
 module.exports = { Cart };

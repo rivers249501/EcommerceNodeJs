@@ -1,14 +1,14 @@
-const multer = require('multer');
+const multer = require("multer");
 
 // Utils
-const { AppError } = require('./appError');
+const { AppError } = require("./appError");
 
 const storage = multer.memoryStorage(); // req.file
 
 const multerFileFilter = (req, file, cb) => {
-  if (!file.mimetype.startsWith('image')) {
+  if (!file.mimetype.startsWith("image")) {
     // Return an error
-    cb(new AppError(400, 'Must provide an image as a file'), false);
+    cb(new AppError(400, "Must provide an image as a file"), false);
   } else {
     cb(null, true);
   }
@@ -16,7 +16,7 @@ const multerFileFilter = (req, file, cb) => {
 
 const upload = multer({
   storage,
-  fileFilter: multerFileFilter
+  fileFilter: multerFileFilter,
 });
 
 module.exports = { upload };
