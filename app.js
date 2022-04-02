@@ -1,5 +1,6 @@
 const express = require('express');
-const helmet = require('helmet')
+const helmet = require('helmet');
+const rateLimit = require('express-rate-limit')
 const cors = require('cors');
 
 //controllers
@@ -19,8 +20,12 @@ const { AppError } = require('./utils/appError')
 //init server
 const app = express();
 
+app.use(helmet())
+
 //import json to receive requeriments in json format
 app.use(express.json());
+
+app.use(rateLimit({ windowMS: 60*1000, max: 5, message: 'Too many request from your IP address, please verify' }))
 
 //Enable cors
 app.use('*', cors());
